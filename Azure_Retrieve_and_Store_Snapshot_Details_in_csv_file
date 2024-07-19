@@ -6,4 +6,4 @@ $SnapshotDetails=Get-AzSnapshot | Select Name,Type,TimeCreated,DiskSizeGB,Resour
 $Date=Get-Date -Format "yyyMMdd_HHmmss"
 
 # Below command would create a unique csv file with current timestamp and store in the defined path
-$SnapshotDetails | Export-Csv -Path "C:\Users\rohit\OneDrive\Desktop\Projects\Azure\$Date.csv"
+$SnapshotDetails | Export-Csv -Path "<Path>\$Date.csv"
