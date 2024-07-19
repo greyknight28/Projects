@@ -1,0 +1,12 @@
+#Store details of Azure Managed disks in a variable
+$Disk = Get-AzDisk
+
+#Filter out required details and store in a varible called DiskDetails (please select the required columns/values depending on the requirement. If You require complete details, 
+please use only 'Get-AzDisk' command)
+$DiskDetails=Get-AzDisk | select Name,DiskState,TimeCreated,DiskSizeGB,ResourceGroupName,Location,UniqueId,Id,PublicNetworkAccess
+
+#Store current timestamp in a variable called Date to uniquely identify the csv file
+$Date=Get-Date -Format "yyyMMdd_HHmmss"
+
+# Below command would create a unique csv file with current timestamp and store in the defined path
+$DiskDetails | Export-Csv -Path "<Path>\$Date.csv"
