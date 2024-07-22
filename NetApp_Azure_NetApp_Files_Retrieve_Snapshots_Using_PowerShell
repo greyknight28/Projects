@@ -1,0 +1,35 @@
+#Define variables to store resource group, location and ANF Account
+$resourceGroup = "ANF_RG_01"
+$location = "centralindia"
+$anfAccountName="ANF_TestAcc_01"
+
+#Display RG
+Get-AzResourceGroup -Name $resourceGroup
+
+#Display ANF account
+Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $anfAccountName
+
+#Displaycapacity pool
+Get-AzNetAppFilesPool -ResourceGroupName $resourceGroup -AccountName $anfAccountName
+
+#Display the virtual network
+$vnet=Get-AzVirtualNetwork -ResourceGroupName $resourceGroup
+
+#Display the subnet
+Get-AzVirtualNetworkSubnetConfig -virtualNetwork $vnet
+
+#Display the volume using the New-AzNetAppFilesVolume command.
+Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $anfAccountName
+
+#Store Pool and Volume details in a variable
+$PoolName="ANF_testpool_01"
+$VolumeName="ANF_Test_Vol_01"
+
+#Define a variable to store current timestamp
+$Date=Get-Date -Format "yyyMMdd_HHmmss"
+
+#Store details of snapshots in a varible
+$AZSnapshots=Get-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup  -AccountName $anfAccountName -PoolName $PoolName -VolumeName $VolumeName
+
+#Create a CSV file with the snapshot details
+$AZSnapshots | Export-Csv -Path "<Path>\$Date.csv"
