@@ -1,0 +1,14 @@
+#Connect to Your individual account
+Connect-AzAccount
+
+#Store the subscription details in a variable
+$Subscription=Get-AzSubscription
+
+#set the context to that particular subscription
+Set-AzContext -Subscription $Subscription
+
+#Create a varibale to store current timestamp
+$Date=Get-Date -Format "yyyMMdd_HHmmss"
+
+#Run below command to store the subscription details in a csv file
+$Subscription | Export-Csv -Path "<Path>\$Date.csv"
