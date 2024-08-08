@@ -1,7 +1,6 @@
 # Projects
 This repo is for all public solutions
 
-Github: https://github.com/greyknight28/Projects
 Credly: https://www.credly.com/users/rohitkr2803/badges
 LinkedIn: https://www.linkedin.com/in/rohitkr2803
 
